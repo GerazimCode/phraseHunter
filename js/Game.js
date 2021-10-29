@@ -31,6 +31,33 @@ class Game {
         let selectedPhrase = this.getRandomPhrase();
         this.activePhrase = selectedPhrase;
         selectedPhrase.addPhraseToDisplay();
-        
+
+    }
+
+    // this methods checks to see if the player has revealed all the letters in the active phrase...
+    checkForWin(){
+        let letterList = document.querySelector("#phrase ul").children;
+        let characterCount = 0;
+        let spaceCount = 0;
+
+        for(let i=0; i<letterList.length; i++){
+            if(letterList[i].classList.contains("show")){
+                characterCount += 1;
+            }else if(letterList[i].classList.contains("space")){
+                spaceCount += 1;
+            }
+        }
+
+        return (characterCount + spaceCount) === letterList.length; 
+    }
+
+    // this removes a life from the score board by replacing the live heart by a lost heart..
+    removeLife(){
+
+    }
+
+    // this displays the original overlay and updates depending on the outcome of the game.
+    gameOver(){
+
     }
 }

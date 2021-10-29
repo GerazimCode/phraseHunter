@@ -25,4 +25,23 @@ class Phrase {
             }
         })
     }
+
+    // checks to see if a letter selected by the player matches a letter in the phrase...
+    checkLetter(letter){
+        let splitPhrase = this.phrase.split(" ");
+        if(splitPhrase.includes(letter)){
+            return true;
+        }
+    }
+
+    // reveals the letter(s) on the board that matches the players selection... 
+    showMatchedLetter(letter){
+        let phraseDiv = document.querySelector("#phrase");
+        let list = phraseDiv.getElementsByTagName("li");
+        for(let i=0; i<list.length; i++){
+            if(list[i].textContent === letter){
+                list[i].classList.add("show");
+            }
+        }
+    }
 }
