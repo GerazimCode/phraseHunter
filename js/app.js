@@ -6,4 +6,6 @@
 
 let game = new Game();
 
-game.getRandomPhrase().addPhraseToDisplay();
+game.startGame();
+
+console.log(`Active phrase - phrase : ${game.activePhrase.phrase}`);

@@ -16,6 +16,7 @@ class Phrase {
         let phraseDiv = document.getElementById("phrase");
         splitPhrase.forEach(character => {
             let spaceCharacter = `<li class = "space"> </li>`;
+            // the example phrase html text file shows "hide letter before the character, this inludes that style"
             let letterCharacter = `<li class = "hide letter ${character}">${character}</li>`;
             if (character === " "){
                 phraseDiv.querySelector("ul").insertAdjacentHTML("beforeend", spaceCharacter);
