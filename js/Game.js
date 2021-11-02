@@ -3,8 +3,6 @@
  * Game.js */
 
 // This class handles the start and finish of the game, handling interactions, getting a random phrase, checking for a win...
-
-
 class Game {
     constructor(){
         this.missed = 0;
@@ -67,18 +65,36 @@ class Game {
         let overlay = document.getElementById("overlay");
         let gameOverMessage = document.getElementById("game-over-message");
         let theOverlayClass = overlay.className;
-        // let overlayClass = document.getElementById("overlay");
-        // to double check this code and test it for more accuracy...
-        // document.removeEventListener("keyup", eventHandler);
         overlay.style.display = "block";
         if(status === "lose"){
-            gameOverMessage.textContent = "You Lost! Relax and Try Again";
+            gameOverMessage.textContent = "You Lost! Relax and Try Again!";
 
         }else if( status === "win"){
             gameOverMessage.textContent = "Great Job, You Won!";
         }
         overlay.classList.replace(theOverlayClass, status);
-        // this.resetGame();
+        
+        // following code resets the game after the user wins or loses the game...
+        let div = document.getElementById("phrase")
+        let ul = div.firstElementChild;
+        while (ul.firstChild){
+            ul.firstChild.remove();
+        }
+
+        // resets the keyboard...
+        let keyboard = document.getElementById("qwerty");
+        let buttons = keyboard.getElementsByTagName("button");
+        for (let i=0; i<buttons.length; i++){
+            buttons[i].disabled = false;
+            buttons[i].className = "key";
+        }
+
+        // resets all of the heart images
+        let scoreboard = document.getElementById("scoreboard");
+        let heartImages = scoreboard.getElementsByTagName("img");
+        for (let i=0; i<heartImages.length; i++){
+            heartImages[i].src = "images/liveHeart.png";
+        }
     }
 
     // function that handles the onscreen keyboard button clicks/handles also the interaction of the player has won...

@@ -10,7 +10,7 @@ class Phrase {
 
     }
 
-    // Methods adds letter placeholders to the display when the game starts
+    // Method adds letter placeholders to the display when the game starts
     addPhraseToDisplay(){
         let splitPhrase = this.phrase.split('');
         let phraseDiv = document.getElementById("phrase");
@@ -28,10 +28,6 @@ class Phrase {
 
     // checks to see if a letter selected by the player matches a letter in the phrase...
     checkLetter(letter){
-        // let splitPhrase = this.phrase.split(" ");
-        // if (splitPhrase.includes(letter)){
-        //     return true;
-        // }
         return this.phrase.includes(letter);
     }
 
