@@ -104,6 +104,7 @@ class Game {
 
         if (this.activePhrase.checkLetter(letter)){
 
+            // adds the chosen css class when the chosen letter in in the phrase
             for(let i=0; i<buttons.length; i++){
                 if(buttons[i].textContent === letter){
                     buttons[i].disabled = true;
@@ -116,7 +117,7 @@ class Game {
             if(this.checkForWin()){
                 this.gameOver("win");
             }
-
+            // adds the wrong css class when the clicked letter is not in the phrase...
         } else{
             for(let i=0; i<buttons.length; i++){
                 if(buttons[i].textContent === letter){
