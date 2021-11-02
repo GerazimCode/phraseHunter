@@ -53,11 +53,31 @@ class Game {
 
     // this removes a life from the score board by replacing the live heart by a lost heart..
     removeLife(){
+        this.missed += 1;
+        let score = document.querySelector("#scoreboard ol").children;
+        score[this.missed - 1].querySelector("img").src = "images/lostHeart.png";
+        if(this.missed === 5){
+            this.gameOver("lose");
+        }
 
     }
 
     // this displays the original overlay and updates depending on the outcome of the game.
-    gameOver(){
+    gameOver(status){
+        let overlay = document.getElementById("overlay");
+        let gameOverMessage = document.getElementById("game-over-message");
+        let theOverlayClass = overlay.className;
+        // let overlayClass = document.getElementById("overlay");
+        // to double check this code and test it for more accuracy...
+        // document.removeEventListener("keyup", eventHandler);
+        overlay.style.display = "block";
+        if(status === "lose"){
+            gameOverMessage.textContent = "Game Over";
 
+        }else if( status === "win"){
+            gameOverMessage.textContent = "Great Job, You Won!";
+        }
+        overlay.classList.replace(theOverlayClass, status);
+        // this.resetGame();
     }
 }

@@ -28,10 +28,11 @@ class Phrase {
 
     // checks to see if a letter selected by the player matches a letter in the phrase...
     checkLetter(letter){
-        let splitPhrase = this.phrase.split(" ");
-        if(splitPhrase.includes(letter)){
-            return true;
-        }
+        // let splitPhrase = this.phrase.split(" ");
+        // if (splitPhrase.includes(letter)){
+        //     return true;
+        // }
+        return this.phrase.includes(letter);
     }
 
     // reveals the letter(s) on the board that matches the players selection... 
