@@ -72,12 +72,43 @@ class Game {
         // document.removeEventListener("keyup", eventHandler);
         overlay.style.display = "block";
         if(status === "lose"){
-            gameOverMessage.textContent = "Game Over";
+            gameOverMessage.textContent = "You Lost! Relax and Try Again";
 
         }else if( status === "win"){
             gameOverMessage.textContent = "Great Job, You Won!";
         }
         overlay.classList.replace(theOverlayClass, status);
         // this.resetGame();
+    }
+
+    // function that handles the onscreen keyboard button clicks/handles also the interaction of the player has won...
+    handleInteraction(letter){
+        let keyboard = document.getElementById("qwerty");
+        let buttons = keyboard.getElementsByTagName("button");
+
+        if (this.activePhrase.checkLetter(letter)){
+
+            for(let i=0; i<buttons.length; i++){
+                if(buttons[i].textContent === letter){
+                    buttons[i].disabled = true;
+                    buttons[i].classList.add("chosen");
+                }
+            }
+
+            this.activePhrase.showMatchedLetter(letter);
+            this.checkForWin();
+            if(this.checkForWin()){
+                this.gameOver("win");
+            }
+
+        } else{
+            for(let i=0; i<buttons.length; i++){
+                if(buttons[i].textContent === letter){
+                    buttons[i].disabled = true;
+                    buttons[i].classList.add("wrong");
+                }
+            }
+            this.removeLife();
+        }
     }
 }

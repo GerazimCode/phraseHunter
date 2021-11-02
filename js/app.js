@@ -13,4 +13,14 @@ button.addEventListener("click", (e) => {
     game.startGame();
 })
 
+// event listerner that handles the pressing of oncreen keyboard...
+let keyboard = document.getElementById("qwerty");
+keyboard.addEventListener("click", (e) => {
+    let target = e.target;
+
+    if (target.tagName ==="BUTTON"){
+        game.handleInteraction(target.textContent);
+    }
+})
+
 
